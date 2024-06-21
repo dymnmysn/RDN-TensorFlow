@@ -251,8 +251,8 @@ class RDN(object):
         return IHR
 
     def build_model(self, images_shape, labels_shape):
-        self.images = tf.placeholder(tf.float32, images_shape, name='images')
-        self.labels = tf.placeholder(tf.float32, labels_shape, name='labels')
+        self.images = tf.Variable(tf.zeros(images_shape, dtype=tf.float32), name='images')
+        self.labels = tf.Variable(tf.zeros(labels_shape, dtype=tf.float32), name='labels')
 
         self.weightsS, self.biasesS = self.SFEParams()
         self.weightsR, self.biasesR = self.RDBParams()
@@ -267,7 +267,7 @@ class RDN(object):
         self.summary = tf.summary.scalar('loss', self.loss)
 
         self.model_name = "%s_%s_%s_%s_x%s" % ("rdn", self.D, self.C, self.G, self.scale)
-        self.saver = tf.train.Saver(max_to_keep=10)
+        self.saver = tf.compat.v1.train.Saver(max_to_keep=10)
 
     def train(self, config):
         print("\nPrepare Data...\n")
