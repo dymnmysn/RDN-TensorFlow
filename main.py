@@ -31,7 +31,8 @@ def parse_args():
 def main():
     FLAGS = parse_args()
     
-    rdn = RDN(is_train=FLAGS.is_train,
+    rdn = RDN(tf.compat.v1.Session(),
+              is_train=FLAGS.is_train,
               is_eval=FLAGS.is_eval,
               image_size=FLAGS.image_size,
               c_dim=FLAGS.c_dim,
