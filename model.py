@@ -292,7 +292,7 @@ class RDN(object):
         batch_start = counter % batch_num
 
         global_step = tf.Variable(counter, trainable=False)
-        learning_rate = tf.train.exponential_decay(config.learning_rate, global_step, config.lr_decay_steps*batch_num, config.lr_decay_rate, staircase=True)
+        learning_rate = tf.compat.v1.train.exponential_decay(config.learning_rate, global_step, config.lr_decay_steps*batch_num, config.lr_decay_rate, staircase=True)
         optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
         learning_step = optimizer.minimize(self.loss, global_step=global_step)
 
