@@ -270,7 +270,7 @@ class RDN(object):
         self.summary = tf.summary.scalar('loss', self.loss)
 
         self.model_name = "%s_%s_%s_%s_x%s" % ("rdn", self.D, self.C, self.G, self.scale)
-        self.saver = tf.compat.v1.train.Saver(max_to_keep=10)
+        #self.saver = tf.compat.v1.train.Saver(max_to_keep=10)
 
     def train(self, config):
         print("\nPrepare Data...\n")
