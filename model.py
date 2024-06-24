@@ -116,8 +116,8 @@ class RDN(object):
         G0 = self.G0
         ks = self.kernel_size
         weightsS = {
-            'w_S_1': tf.Variable(tf.random_normal([ks, ks, self.c_dim, G0], stddev=0.01), name='w_S_1'),
-            'w_S_2': tf.Variable(tf.random_normal([ks, ks, G0, G], stddev=0.01), name='w_S_2')
+            'w_S_1': tf.Variable(tf.random.normal([ks, ks, self.c_dim, G0], stddev=0.01), name='w_S_1'),
+            'w_S_2': tf.Variable(tf.random.normal([ks, ks, G0, G], stddev=0.01), name='w_S_2')
         }
         biasesS = {
             'b_S_1': tf.Variable(tf.zeros([G0], name='b_S_1')),
