@@ -251,6 +251,7 @@ class RDN(object):
         return IHR
 
     def build_model(self, images_shape, labels_shape):
+        print("Shape is ", images_shape)
         self.images = tf.Variable(tf.zeros(images_shape, dtype=tf.float32), name='images')
         self.labels = tf.Variable(tf.zeros(labels_shape, dtype=tf.float32), name='labels')
 
