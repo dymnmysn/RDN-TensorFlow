@@ -259,7 +259,7 @@ class RDN(object):
         self.weightsR, self.biasesR = self.RDBParams()
         self.weightsD, self.biasesD = self.DFFParams()
         self.weightsU, self.biasesU = self.UPNParams()
-        self.weight_final = tf.Variable(tf.random_normal([self.kernel_size, self.kernel_size, self.c_dim, self.c_dim], stddev=np.sqrt(2.0/9/3)), name='w_f')
+        self.weight_final = tf.Variable(tf.random.normal([self.kernel_size, self.kernel_size, self.c_dim, self.c_dim], stddev=np.sqrt(2.0/9/3)), name='w_f')
         self.bias_final = tf.Variable(tf.zeros([self.c_dim], name='b_f')),
         
         self.pred = self.model()
