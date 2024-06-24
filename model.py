@@ -137,9 +137,9 @@ class RDN(object):
 
         for i in range(1, D+1):
             for j in range(1, C+1):
-                weightsR.update({'w_R_%d_%d' % (i, j): tf.Variable(tf.random_normal([ks, ks, G * j, G], stddev=0.01), name='w_R_%d_%d' % (i, j))}) 
+                weightsR.update({'w_R_%d_%d' % (i, j): tf.Variable(tf.random.normal([ks, ks, G * j, G], stddev=0.01), name='w_R_%d_%d' % (i, j))}) 
                 biasesR.update({'b_R_%d_%d' % (i, j): tf.Variable(tf.zeros([G], name='b_R_%d_%d' % (i, j)))})
-            weightsR.update({'w_R_%d_%d' % (i, C+1): tf.Variable(tf.random_normal([1, 1, G * (C+1), G], stddev=0.01), name='w_R_%d_%d' % (i, C+1))})
+            weightsR.update({'w_R_%d_%d' % (i, C+1): tf.Variable(tf.random.normal([1, 1, G * (C+1), G], stddev=0.01), name='w_R_%d_%d' % (i, C+1))})
             biasesR.update({'b_R_%d_%d' % (i, C+1): tf.Variable(tf.zeros([G], name='b_R_%d_%d' % (i, C+1)))})
 
         return weightsR, biasesR
@@ -151,8 +151,8 @@ class RDN(object):
         G0 = self.G0
         ks = self.kernel_size
         weightsD = {
-            'w_D_1': tf.Variable(tf.random_normal([1, 1, G * D, G0], stddev=0.01), name='w_D_1'),
-            'w_D_2': tf.Variable(tf.random_normal([ks, ks, G0, G0], stddev=0.01), name='w_D_2')
+            'w_D_1': tf.Variable(tf.random.normal([1, 1, G * D, G0], stddev=0.01), name='w_D_1'),
+            'w_D_2': tf.Variable(tf.random.normal([ks, ks, G0, G0], stddev=0.01), name='w_D_2')
         }
         biasesD = {
             'b_D_1': tf.Variable(tf.zeros([G0], name='b_D_1')),
@@ -164,9 +164,9 @@ class RDN(object):
     def UPNParams(self):
         G0 = self.G0
         weightsU = {
-            'w_U_1': tf.Variable(tf.random_normal([5, 5, G0, 64], stddev=0.01), name='w_U_1'),
-            'w_U_2': tf.Variable(tf.random_normal([3, 3, 64, 32], stddev=0.01), name='w_U_2'),
-            'w_U_3': tf.Variable(tf.random_normal([3, 3, 32, self.c_dim * self.scale * self.scale ], stddev=np.sqrt(2.0/9/32)), name='w_U_3')
+            'w_U_1': tf.Variable(tf.random.normal([5, 5, G0, 64], stddev=0.01), name='w_U_1'),
+            'w_U_2': tf.Variable(tf.random.normal([3, 3, 64, 32], stddev=0.01), name='w_U_2'),
+            'w_U_3': tf.Variable(tf.random.normal([3, 3, 32, self.c_dim * self.scale * self.scale ], stddev=np.sqrt(2.0/9/32)), name='w_U_3')
         }
         biasesU = {
             'b_U_1': tf.Variable(tf.zeros([64], name='b_U_1')),
